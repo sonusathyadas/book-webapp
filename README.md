@@ -69,6 +69,29 @@ BookManager
 3. Run the application using the command: `dotnet run`.
 4. Access the application in your web browser at `http://localhost:5000`.
 
+## Container Package
+The GitHub Actions workflow builds the existing Dockerfile and publishes the image
+to `ghcr.io/sonusathyadas/book-webapp` on pushes to `main`, version tags such as
+`v1.0.0`, and manual runs from the Actions tab. Pull requests targeting `main`
+build the image without publishing it.
+
+Pushes to `main` publish `latest`, `main`, and a `sha-<commit>` tag. Version tags
+publish the full version and major/minor tags, for example `1.0.0` and `1.0`.
+The workflow authenticates with the built-in `GITHUB_TOKEN`; no additional
+registry secret is required. Include the Dockerfile and `.dockerignore` when
+committing the workflow.
+
+Run the published image with persistent SQLite storage:
+
+```sh
+docker run --detach --name book-manager --publish 8080:8080 --volume book-manager-data:/data ghcr.io/sonusathyadas/book-webapp:latest
+```
+
+Open `http://localhost:8080`. GHCR packages are private by default. For a private
+package, log in to `ghcr.io` using a personal access token (classic) with
+`read:packages`, or change the package visibility to public in GitHub to allow
+unauthenticated pulls.
+
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any enhancements or bug fixes.
 
