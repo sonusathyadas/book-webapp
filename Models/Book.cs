@@ -27,5 +27,8 @@ namespace BookManager.Models
 
         [Range(1, 10000)]
         public int NumberOfPages { get; set; }
+
+        public DateTime? PublishedDate { get; set; }
+        
     }
 }
