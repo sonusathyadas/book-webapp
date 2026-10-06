@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero text-center">
+    <i class="bi bi-journal-bookmark-fill display-3"></i>
+    <h1 class="display-5 fw-bold mt-3">Welcome to Book Manager</h1>
+    <p class="lead mb-4">Organize and manage your book collection easily.</p>
+    <a class="btn btn-light btn-lg me-2" asp-controller="Books" asp-action="Index"><i class="bi bi-book me-1"></i>View Books</a>
+    <a class="btn btn-outline-light btn-lg" asp-controller="Books" asp-action="Create"><i class="bi bi-plus-lg me-1"></i>Add a Book</a>
+</section>

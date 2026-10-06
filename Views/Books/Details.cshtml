@@ -1,0 +1,33 @@
+@model BookManager.Models.Book
+
+<div class="card detail-card">
+    <div class="card-body p-4">
+        <div class="row g-4">
+            <div class="col-md-4">
+                @if (!string.IsNullOrWhiteSpace(Model.CoverImageUrl))
+                {
+                    <img src="@Model.CoverImageUrl" class="detail-cover" alt="Cover of @Model.Title" />
+                }
+                else
+                {
+                    <div class="book-cover-placeholder rounded"><i class="bi bi-book"></i></div>
+                }
+            </div>
+            <div class="col-md-8">
+                <h1 class="h2 fw-bold">@Model.Title</h1>
+                <p class="text-muted fs-5">by @Model.Author</p>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">Genre</dt>
+                    <dd class="col-sm-9">@Model.Genre</dd>
+                    <dt class="col-sm-3">Language</dt>
+                    <dd class="col-sm-9">@Model.Language</dd>
+                    <dt class="col-sm-3">Pages</dt>
+                    <dd class="col-sm-9">@Model.NumberOfPages</dd>
+                </dl>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="bi bi-pencil me-1"></i>Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</a>
+                <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

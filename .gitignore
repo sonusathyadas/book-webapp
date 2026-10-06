@@ -1,0 +1,30 @@
+## .NET build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+out/
+
+## Visual Studio and IDE files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Test and coverage output
+TestResults/
+coverage/
+coverage.*
+
+## Local environment files
+.env
+.env.*
+!.env.example
+
+## OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
