@@ -170,6 +170,12 @@ namespace BookManager.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult XssDemo(string? input)
+        {
+            return Content($"<h1>Reflected XSS demonstration</h1><p>{input}</p>", "text/html");
+        }
+
         private IActionResult HandleException(Exception exception, string actionName)
         {
             _logger.LogError(exception, "An error occurred while executing {ActionName}.", actionName);
