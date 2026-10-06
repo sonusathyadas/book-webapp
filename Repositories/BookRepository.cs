@@ -25,6 +25,21 @@ namespace BookManager.Repositories
             return _context.Books.Find(id);
         }
 
+        public IEnumerable<Book> Search(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return GetAll();
+            }
+
+            return _context.Books
+                .Where(book => book.Title.Contains(query)
+                    || book.Author.Contains(query)
+                    || book.Genre.Contains(query)
+                    || book.Language.Contains(query))
+                .ToList();
+        }
+
         public void Add(Book book)
         {
             _context.Books.Add(book);
