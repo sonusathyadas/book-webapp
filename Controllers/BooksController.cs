@@ -170,6 +170,21 @@ namespace BookManager.Controllers
             }
         }
 
+        // GET: Books/SearchByGenre?genre=Fantasy
+        [HttpGet]
+        public IActionResult SearchByGenre(string? genre)
+        {
+            try
+            {
+                var books = _bookRepository.SearchByGenre(genre);
+                return View("Index", books);
+            }
+            catch (Exception exception)
+            {
+                return HandleException(exception, nameof(SearchByGenre));
+            }
+        }
+
         private IActionResult HandleException(Exception exception, string actionName)
         {
             _logger.LogError(exception, "An error occurred while executing {ActionName}.", actionName);

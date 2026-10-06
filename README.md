@@ -9,6 +9,7 @@ Book Manager is a .NET 10 MVC application designed to manage book-related operat
 - **Delete Books**: Users can remove books from the collection.
 - **List Books**: Users can view a list of all books in the collection.
 - **Retrieve Book Details**: Users can view detailed information about a specific book.
+- **Search by Category/Genre**: Visit `/Books/SearchByGenre?genre=Fantasy` to search only the book's genre (the category field). Matching uses case-sensitive substring search, with surrounding input whitespace ignored. A missing, empty, or whitespace-only genre lists all books; an unmatched genre returns an empty list.
 
 ## Technology Stack
 - **Framework**: .NET 10

@@ -40,6 +40,19 @@ namespace BookManager.Repositories
                 .ToList();
         }
 
+        public IEnumerable<Book> SearchByGenre(string? genre)
+        {
+            if (string.IsNullOrWhiteSpace(genre))
+            {
+                return GetAll();
+            }
+
+            genre = genre.Trim();
+            return _context.Books
+                .Where(book => book.Genre.Contains(genre))
+                .ToList();
+        }
+
         public void Add(Book book)
         {
             _context.Books.Add(book);
